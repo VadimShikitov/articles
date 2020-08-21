@@ -1,0 +1,1 @@
+export { ReduxLogoComponent } from './ReduxLogoComponent';
