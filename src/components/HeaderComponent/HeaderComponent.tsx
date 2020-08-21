@@ -14,11 +14,11 @@ const useStyles = makeStyles({
 export const HeaderComponent: React.FC = () => {
   const classes = useStyles();
   return (
-    <AppBar>
+    <AppBar position='static'>
       <Toolbar className={classes.toolbar}>
         <ReduxLogoComponent />
         <Typography variant='h4'>Vadim Shikitov</Typography>
-        <Button variant='contained' color='secondary'>
+        <Button size='medium' color='secondary'>
           Login
         </Button>
       </Toolbar>

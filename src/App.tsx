@@ -1,11 +1,21 @@
 import React, { useMemo } from 'react';
 import { HeaderContainer } from './containers/HeaderContainer';
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core';
+import {
+  createMuiTheme,
+  MuiThemeProvider,
+  CssBaseline,
+} from '@material-ui/core';
+import { ArticleOverViewContainer } from './containers/ArticleOverviewContainer';
 
 const App: React.FunctionComponent = () => {
   const theme = useMemo(
     () =>
       createMuiTheme({
+        palette: {
+          background: {
+            default: '#D3D3D3',
+          },
+        },
         mixins: {
           toolbar: {
             minHeight: 64,
@@ -17,9 +27,9 @@ const App: React.FunctionComponent = () => {
 
   return (
     <MuiThemeProvider theme={theme}>
-      <div>
-        <HeaderContainer />
-      </div>
+      <CssBaseline />
+      <HeaderContainer />
+      <ArticleOverViewContainer />
     </MuiThemeProvider>
   );
 };

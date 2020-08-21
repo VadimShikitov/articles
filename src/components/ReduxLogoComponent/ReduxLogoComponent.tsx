@@ -3,7 +3,7 @@ import React from 'react';
 export const ReduxLogoComponent: React.FC = () => {
   return (
     <svg
-      height='55'
+      height='45'
       viewBox='0 0 256 244'
       xmlns='http://www.w3.org/2000/svg'
       preserveAspectRatio='xMidYMid'

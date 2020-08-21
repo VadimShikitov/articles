@@ -1,0 +1,1 @@
+export { ArticleOverViewComponent } from './ArticleOverViewComponent';
