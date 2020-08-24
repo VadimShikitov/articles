@@ -1,11 +1,11 @@
 import React, { useMemo } from 'react';
-import { HeaderContainer } from './containers/HeaderContainer';
 import {
   createMuiTheme,
   MuiThemeProvider,
   CssBaseline,
 } from '@material-ui/core';
-import { ArticleOverViewContainer } from './containers/ArticleOverviewContainer';
+import { HeaderComponent } from './components/HeaderComponent';
+import { ArticleOverViewComponent } from './components/ArticleOverViewComponent';
 
 const App: React.FunctionComponent = () => {
   const theme = useMemo(
@@ -28,8 +28,8 @@ const App: React.FunctionComponent = () => {
   return (
     <MuiThemeProvider theme={theme}>
       <CssBaseline />
-      <HeaderContainer />
-      <ArticleOverViewContainer />
+      <HeaderComponent />
+      <ArticleOverViewComponent />
     </MuiThemeProvider>
   );
 };

@@ -24,7 +24,7 @@ const useStyles = makeStyles({
 export const ArticleOverViewComponent: React.FC = () => {
   const classes = useStyles();
   return (
-    <>
+    <div style={{ overflow: 'hidden', marginTop: 20 }}>
       <Grid container spacing={5}>
         <Grid item xl={3} lg={4} md={6} xs={12}>
           <Card className={classes.root}>
@@ -147,6 +147,6 @@ export const ArticleOverViewComponent: React.FC = () => {
           </Card>
         </Grid>
       </Grid>
-    </>
+    </div>
   );
 };
