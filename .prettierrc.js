@@ -8,6 +8,7 @@ module.exports = {
   trailingComma: 'all',
   bracketSpacing: true,
   jsxBracketSameLine: false,
+  esproposal_decorators: true,
   arrowParens: 'avoid',
   rangeStart: 0,
   parser: 'flow',
