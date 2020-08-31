@@ -4,6 +4,9 @@ import { useHistory } from 'react-router-dom';
 import { CustomInput, CustomTextArea } from '../Input';
 import { Paper, makeStyles, Typography } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
+import { inject, observer } from 'mobx-react';
+import { Article } from '../../types';
+import { genereateID } from '../../helpers';
 
 const useStyles = makeStyles({
   root: {
@@ -31,14 +34,33 @@ const useStyles = makeStyles({
   },
 })
 
+type CreateArticalProps = {
+  articlesStore?: {
+    addArticle: (article: Article) => void,
+  }
+}
+
 /*
 ** Compnent for create new article by using hook, whoos managing new article state.
 */
-export const CreateArticleComponent = () => {
+export const CreateArticleComponent = inject('articlesStore')(observer(({ articlesStore }: CreateArticalProps) => {
 
   const history = useHistory();
   const { title, imageUrl, description, changeDescription, changeImageUrl, changeTitleText } = useNewArticle();
   const classes = useStyles();
+
+  const addArticalHandler = useCallback(() => {
+    const articleId = genereateID();
+    articlesStore?.addArticle({
+      title: title,
+      image: imageUrl,
+      description: description,
+      likeCount: 0,
+      isLiked: false,
+      id: articleId
+    })
+    history.push('/');
+  }, [title, imageUrl, description, articlesStore, history])
 
   const cancelHandler = useCallback(() => history.push('/'), [history]);
 
@@ -57,9 +79,9 @@ export const CreateArticleComponent = () => {
         />
         <div className={classes.buttonGroup}>
           <Button color='secondary' size="medium" variant="outlined" onClick={cancelHandler}>Cancel</Button>
-          <Button color='primary' size="medium" variant="outlined">Save</Button>
+          <Button color='primary' size="medium" variant="outlined" onClick={addArticalHandler}>Save</Button>
         </div>
       </Paper>
     </div>
   )
-}
+}))

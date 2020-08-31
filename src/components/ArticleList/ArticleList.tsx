@@ -52,7 +52,7 @@ export const ArticleList = observer(({ article, handleLikeCard, handleUnlikeCard
   const classes = useStyles();
   const fill = article.isLiked ? 'red' : 'grey';
   const likeHandle = article.isLiked ? handleUnlikeCard : handleLikeCard;
-
+  console.log('asd')
   return (
     <Grid item xl={3} lg={4} md={6} xs={12}>
       <Card className={classes.root}>

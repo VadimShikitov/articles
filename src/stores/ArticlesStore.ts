@@ -23,8 +23,9 @@ class ArcticlesStore {
     delete this.articles[artId]
   }
 
-  @action addArticle = (article: Article, id: string) => {
-    this.articles[id] = article;
+  @action addArticle = (article: Article) => {
+    const { id } = article
+    this.articles[id] = article
   }
 };
 

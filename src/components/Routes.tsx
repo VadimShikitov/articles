@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { HeaderComponent } from './HeaderComponent';
-import { ARTICLES, LOGIN, NEW_ARTICLE } from '../constants/routes'
+import { ARTICLES, NEW_ARTICLE } from '../constants/routes'
 import { CssBaseline } from '@material-ui/core';
 import { ArticleOverViewComponent } from './ArticleOverViewComponent';
 import { CreateArticleComponent } from './CreateArticleComponent';
