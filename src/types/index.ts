@@ -3,5 +3,9 @@ export type Article = {
   title: string,
   description: string,
   id: string,
+  likeCount: number,
+  isLiked: boolean,
 };
-export type Articles = Article[];
+export type Articles = {
+  [key: string]: Article;
+}

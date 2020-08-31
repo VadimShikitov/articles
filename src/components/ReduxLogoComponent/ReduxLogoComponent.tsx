@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const ReduxLogoComponent: React.FC = () => {
+export const ReduxLogoComponent = () => {
   return (
     <svg
       height='45'

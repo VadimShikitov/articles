@@ -11,7 +11,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const HeaderComponent: React.FC = () => {
+export const HeaderComponent = () => {
   const classes = useStyles();
   return (
     <AppBar position='static'>

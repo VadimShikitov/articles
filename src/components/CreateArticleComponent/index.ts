@@ -1,0 +1,1 @@
+export { CreateArticleComponent } from './CreateArticleComponent'

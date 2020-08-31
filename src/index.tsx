@@ -7,11 +7,9 @@ import { Provider } from 'mobx-react';
 import { articlesStore } from './stores/ArticlesStore';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider articlesStore={articlesStore}>
-      <App />
-    </Provider>
-  </React.StrictMode>,
+  <Provider articlesStore={articlesStore}>
+    <App />
+  </Provider>,
   document.getElementById('root'),
 );
 

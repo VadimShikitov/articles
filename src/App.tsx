@@ -1,35 +1,30 @@
-import React, { useMemo } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, BrowserRouter } from 'react-router-dom';
 import {
   createMuiTheme,
   MuiThemeProvider,
-  CssBaseline,
 } from '@material-ui/core';
-import { HeaderComponent } from './components/HeaderComponent';
-import { ArticleOverViewComponent } from './components/ArticleOverViewComponent';
+import { Routes } from './components/Routes'
 
-const App: React.FunctionComponent = () => {
-  const theme = useMemo(
-    () =>
-      createMuiTheme({
-        palette: {
-          background: {
-            default: '#D3D3D3',
-          },
-        },
-        mixins: {
-          toolbar: {
-            minHeight: 64,
-          },
-        },
-      }),
-    [],
-  );
+const App = () => {
+  const theme = createMuiTheme({
+    palette: {
+      background: {
+        default: '#D3D3D3',
+      },
+    },
+    mixins: {
+      toolbar: {
+        minHeight: 64,
+      },
+    },
+  });
 
   return (
     <MuiThemeProvider theme={theme}>
-      <CssBaseline />
-      <HeaderComponent />
-      <ArticleOverViewComponent />
+      <BrowserRouter>
+        <Routes />
+      </BrowserRouter>
     </MuiThemeProvider>
   );
 };
