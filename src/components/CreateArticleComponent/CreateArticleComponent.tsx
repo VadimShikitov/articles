@@ -1,5 +1,7 @@
 import React, { useCallback } from 'react';
 import { useNewArticle } from '../../hooks/useNewArticle';
+import { useValidation, ValidationKey } from '../../hooks/useValidation';
+import { validators } from '../../constants/validation';
 import { useHistory } from 'react-router-dom';
 import { CustomInput, CustomTextArea } from '../Input';
 import { Paper, makeStyles, Typography } from '@material-ui/core';
@@ -20,8 +22,9 @@ const useStyles = makeStyles({
     alignItems: 'center',
   },
   paper: {
+    position: 'relative',
     width: 500,
-    height: 490,
+    // height: '100%',
     boxSizing: 'border-box',
     display: 'flex',
     flexDirection: 'column',
@@ -31,6 +34,7 @@ const useStyles = makeStyles({
     justifyContent: 'space-between',
     paddingRight: 30,
     paddingLeft: 30,
+    paddingBottom: 30,
   },
 })
 
@@ -46,6 +50,8 @@ type CreateArticalProps = {
 export const CreateArticleComponent = inject('articlesStore')(observer(({ articlesStore }: CreateArticalProps) => {
 
   const history = useHistory();
+  const { validate, errorsState } = useValidation();
+
   const { title, imageUrl, description, changeDescription, changeImageUrl, changeTitleText } = useNewArticle();
   const classes = useStyles();
 
@@ -62,20 +68,47 @@ export const CreateArticleComponent = inject('articlesStore')(observer(({ articl
     history.push('/');
   }, [title, imageUrl, description, articlesStore, history])
 
+
+  const validateOnBlur = useCallback(({ target: { name } }: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    validate({ titleError: title, imageError: imageUrl, descriptionError: description }, validators)(name as ValidationKey);
+  }, [title, imageUrl, description, validate])
+
   const cancelHandler = useCallback(() => history.push('/'), [history]);
+
+  const { titleError, descriptionError, imageError } = errorsState;
+  console.log("titleError", titleError)
 
   return (
     <div className={classes.root}>
       <Paper className={classes.paper} elevation={3}>
         <Typography variant='h5' align='center' style={{ marginTop: 15 }}>Create a new article</Typography>
-        <CustomInput value={title} onChange={changeTitleText} label={'title'} style={{ margin: 30 }} />
-        <CustomInput value={imageUrl} onChange={changeImageUrl} label={'image'} style={{ margin: 30 }} />
+        <CustomInput
+          error={titleError ? titleError : ''}
+          name={'titleError'}
+          value={title}
+          onChange={changeTitleText}
+          onBlur={validateOnBlur}
+          label={'title'}
+          style={{ margin: 25 }}
+        />
+        <CustomInput
+          error={imageError ? imageError : ''}
+          name={'imageError'}
+          value={imageUrl}
+          onBlur={validateOnBlur}
+          onChange={changeImageUrl}
+          label={'image'}
+          style={{ margin: 25 }}
+        />
         <CustomTextArea
+          error={descriptionError ? descriptionError : ''}
+          name={'descriptionError'}
           value={description}
+          onBlur={validateOnBlur}
           onChange={changeDescription}
           label={'description'}
           rows={3}
-          style={{ margin: 30 }}
+          style={{ margin: 25 }}
         />
         <div className={classes.buttonGroup}>
           <Button color='secondary' size="medium" variant="outlined" onClick={cancelHandler}>Cancel</Button>
