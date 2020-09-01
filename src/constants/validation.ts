@@ -30,7 +30,7 @@ export type Validators = {
   descriptionError: TitleOrDescriptionType,
   imageError: [ValidatorsFunction],
   emailError: [ValidatorsFunction, ValidatorsFunction],
-}
+};
 export const validators: Validators = {
   titleError: [
     isRequired(IS_REQUIRED_ERROR_MESAGE),
@@ -49,4 +49,4 @@ export const validators: Validators = {
     isRequired(IS_REQUIRED_ERROR_MESAGE),
     checkRegExp(EMAIL_REG_EXP, EMAIL_REG_EXP_ERROR_MESSAGE),
   ]
-}
+};

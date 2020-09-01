@@ -1,8 +1,9 @@
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import { ReduxLogoComponent } from '../ReduxLogoComponent';
 import { Typography, Button, makeStyles } from '@material-ui/core';
+import { ReduxLogoComponent } from '../ReduxLogoComponent';
+
 
 const useStyles = makeStyles({
   toolbar: {

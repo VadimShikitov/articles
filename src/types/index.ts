@@ -8,4 +8,4 @@ export type Article = {
 };
 export type Articles = {
   [key: string]: Article;
-}
+};
