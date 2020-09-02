@@ -26,26 +26,26 @@ type TitleOrDescriptionType = [ValidatorsFunction, ValidatorsFunction, Validator
 export type Validator = ValidatorsFunction;
 
 export type Validators = {
-  titleError: TitleOrDescriptionType,
-  descriptionError: TitleOrDescriptionType,
-  imageError: [ValidatorsFunction],
-  emailError: [ValidatorsFunction, ValidatorsFunction],
+  title: TitleOrDescriptionType,
+  description: TitleOrDescriptionType,
+  imageUrl: [ValidatorsFunction],
+  email: [ValidatorsFunction, ValidatorsFunction],
 };
 export const validators: Validators = {
-  titleError: [
+  title: [
     isRequired(IS_REQUIRED_ERROR_MESAGE),
     minLegth(MIN_TITLE_LENGTH, TITLE_MIN_ERROR_MESSAGE),
     maxLegth(MAX_TITLE_LENGTH, TITLE_MAX_ERROR_MESSAGE)
   ],
-  descriptionError: [
+  description: [
     isRequired(IS_REQUIRED_ERROR_MESAGE),
     minLegth(DESCRIPTION_MIN_LENGTH, DESC_MIN_ERROR_MESSAGE),
     maxLegth(DESCRIPTION_MAX_LENGTH, DESC_MAX_ERROR_MESSAGE),
   ],
-  imageError: [
+  imageUrl: [
     isRequired(IS_REQUIRED_ERROR_MESAGE),
   ],
-  emailError: [
+  email: [
     isRequired(IS_REQUIRED_ERROR_MESAGE),
     checkRegExp(EMAIL_REG_EXP, EMAIL_REG_EXP_ERROR_MESSAGE),
   ]

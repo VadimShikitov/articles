@@ -1,23 +1,11 @@
 import { useState } from 'react';
 import { Validators, Validator } from '../constants/validation';
 
-export type ValidationKey = 'titleError' | 'imageError' | 'descriptionError';
+export const useValidation = <T extends { [key: string]: string }>(fieldsToValidate: T) => {
 
-type FieldsType = {
-  titleError: string,
-  imageError: string,
-  descriptionError: string,
-};
+  const [errorsState, setErrorsState] = useState<T>(fieldsToValidate);
 
-export const useValidation = () => {
-
-  const [errorsState, setErrorsState] = useState<FieldsType>({
-    titleError: '',
-    imageError: '',
-    descriptionError: '',
-  })
-
-  const validate = (fields: FieldsType, validators: Validators) => (key: ValidationKey) => {
+  const validate = (fields: T, validators: Validators) => (key: keyof Validators) => {
 
     const value = fields[key];
     const errorArray = validators[key].reduce((acc: string[], validator: Validator) => {

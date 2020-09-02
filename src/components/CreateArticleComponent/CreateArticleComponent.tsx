@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { useNewArticle } from '../../hooks/useNewArticle';
-import { useValidation, ValidationKey } from '../../hooks/useValidation';
-import { validators } from '../../constants/validation';
+import { useValidation } from '../../hooks/useValidation';
+import { validators, Validators } from '../../constants/validation';
 import { useHistory } from 'react-router-dom';
 import { CustomInput, CustomTextArea } from '../Input';
 import { Paper, makeStyles, Typography } from '@material-ui/core';
@@ -50,9 +50,10 @@ type CreateArticalProps = {
 export const CreateArticleComponent = inject('articlesStore')(observer(({ articlesStore }: CreateArticalProps) => {
 
   const history = useHistory();
-  const { validate, errorsState } = useValidation();
 
   const { title, imageUrl, description, changeDescription, changeImageUrl, changeTitleText } = useNewArticle();
+  const { validate, errorsState } = useValidation({ title, imageUrl, description });
+
   const classes = useStyles();
 
   const addArticalHandler = useCallback(() => {
@@ -70,13 +71,12 @@ export const CreateArticleComponent = inject('articlesStore')(observer(({ articl
 
 
   const validateOnBlur = useCallback(({ target: { name } }: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    validate({ titleError: title, imageError: imageUrl, descriptionError: description }, validators)(name as ValidationKey);
+    validate({ title: title, imageUrl: imageUrl, description: description }, validators)(name as keyof Validators);
   }, [title, imageUrl, description, validate])
 
   const cancelHandler = useCallback(() => history.push('/'), [history]);
 
-  const { titleError, descriptionError, imageError } = errorsState;
-  console.log("titleError", titleError)
+  const { title: titleError, imageUrl: imageError, description: descriptionError } = errorsState;
 
   return (
     <div className={classes.root}>
@@ -84,7 +84,7 @@ export const CreateArticleComponent = inject('articlesStore')(observer(({ articl
         <Typography variant='h5' align='center' style={{ marginTop: 15 }}>Create a new article</Typography>
         <CustomInput
           error={titleError ? titleError : ''}
-          name={'titleError'}
+          name={'title'}
           value={title}
           onChange={changeTitleText}
           onBlur={validateOnBlur}
@@ -93,7 +93,7 @@ export const CreateArticleComponent = inject('articlesStore')(observer(({ articl
         />
         <CustomInput
           error={imageError ? imageError : ''}
-          name={'imageError'}
+          name={'imageUrl'}
           value={imageUrl}
           onBlur={validateOnBlur}
           onChange={changeImageUrl}
@@ -102,7 +102,7 @@ export const CreateArticleComponent = inject('articlesStore')(observer(({ articl
         />
         <CustomTextArea
           error={descriptionError ? descriptionError : ''}
-          name={'descriptionError'}
+          name={'description'}
           value={description}
           onBlur={validateOnBlur}
           onChange={changeDescription}
