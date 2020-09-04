@@ -2,7 +2,7 @@ module.exports = {
   printWidth: 80,
   tabWidth: 2,
   useTabs: false,
-  semi: true,
+  semi: false,
   singleQuote: true,
   jsxSingleQuote: true,
   trailingComma: 'all',
@@ -15,5 +15,5 @@ module.exports = {
   requirePragma: false,
   insertPragma: false,
   proseWrap: 'preserve',
-  endOfLine: 'auto',
+  // endOfLine: 'auto',
 };

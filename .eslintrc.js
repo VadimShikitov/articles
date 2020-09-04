@@ -16,10 +16,11 @@ module.exports = {
   },
   rules: {
     semi: [2, 'always'],
+    // [prettier / prettier]: 'error',
   },
   settings: {
     react: {
       version: 'detect', // Tells eslint-plugin-react to automatically detect the version of React to use
     },
   },
-};
+}

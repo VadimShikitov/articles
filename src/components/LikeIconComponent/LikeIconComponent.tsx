@@ -1,5 +1,10 @@
 import React from 'react';
 
+/**
+ * Component for draw svg like icon
+ * @param fill - color svg elenemts
+ * @returns svg icon
+ */
 export const LikeIconComponent = ({ fill }: { fill: string }) => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height='20'>

@@ -1,5 +1,10 @@
 import React from 'react';
 
+/**
+ * Component for draw svg redux icon
+ * @param fill - color svg elenemts
+ * @returns svg icon
+ */
 export const ReduxLogoComponent = () => {
   return (
     <svg

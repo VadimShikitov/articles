@@ -4,21 +4,12 @@ import {
   createMuiTheme,
   MuiThemeProvider,
 } from '@material-ui/core';
-import { Routes } from './components/Routes'
+import { Routes } from './components/Routes';
+import { muiTheme } from './mui-theme';
 
 const App = () => {
-  const theme = createMuiTheme({
-    palette: {
-      background: {
-        default: '#D3D3D3',
-      },
-    },
-    mixins: {
-      toolbar: {
-        minHeight: 64,
-      },
-    },
-  });
+
+  const theme = createMuiTheme(muiTheme);
 
   return (
     <MuiThemeProvider theme={theme}>

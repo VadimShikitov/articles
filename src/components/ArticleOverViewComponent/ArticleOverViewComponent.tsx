@@ -1,14 +1,12 @@
 import React, { useCallback } from 'react';
 import { observer, inject } from 'mobx-react';
 import { Link } from 'react-router-dom';
-import {
-  Grid,
-  makeStyles,
-} from '@material-ui/core';
+import makeStyles from '@material-ui/core/styles/makeStyles';
+import Grid from '@material-ui/core/Grid';
 import SpeedDial from '@material-ui/lab/SpeedDial';
 import AddIcon from '@material-ui/icons/Add';
-import { Articles } from '../../types/index';
 import { ArticleList } from '../ArticleList';
+import { Articles } from '../../types/index';
 import { NEW_ARTICLE } from '../../constants/routes';
 
 const useStyles = makeStyles({
@@ -33,23 +31,29 @@ type ArticlesProps = {
   }
 }
 
+/**
+ * Component retrieving data from the store and render all articles
+ * @param articlesStore - store for all articles and their actions
+ * @return view all articles
+ */
+
 export const ArticleOverViewComponent = inject('articlesStore')(observer(({ articlesStore }: ArticlesProps) => {
   const classes = useStyles();
 
   const handleLikeCard = useCallback((event: React.MouseEvent<HTMLButtonElement>) => {
     const id = event.currentTarget.dataset.id!;
     articlesStore?.articleLike(id);
-  }, [articlesStore])
+  }, [articlesStore]);
 
   const handleUnlikeCard = useCallback((event: React.MouseEvent<HTMLButtonElement>) => {
     const id = event.currentTarget.dataset.id!;
     articlesStore?.articleUnlike(id);
-  }, [articlesStore])
+  }, [articlesStore]);
 
   const handleDeleteCard = useCallback((event: React.MouseEvent<HTMLButtonElement>) => {
     const id = event.currentTarget.dataset.id!;
     articlesStore?.deleteArticle(id);
-  }, [articlesStore])
+  }, [articlesStore]);
 
   return (
     <div className={classes.root}>

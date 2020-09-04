@@ -14,6 +14,14 @@ type CustomInputType = {
 
 /**
  * custom text input for using on project
+ * @param name - The name of the field is for the form processor to identify it.
+ * @param value - item value
+ * @param error - text for view error validation
+ * @param onChange - onChange hadler for controlling input 
+ * @param label - label for input
+ * @param style - object of ccs properties for input
+ * @param onBlur - on  blur effect, in this project using for validation fields
+ * @returns material ui input with custom styles and handlers
  */
 export const CustomInput = ({ name, value, error, onChange, onBlur, label, style }: CustomInputType) => (
   <TextField
@@ -41,7 +49,16 @@ type CustomTextAreaType = {
 }
 
 /**
- * custom text area for using on project
+ * custom textare for using on project
+ * @param name - The name of the field is for the form processor to identify it.
+ * @param value - item value
+ * @param error - text for view error validation
+ * @param rows - number of rows textArea
+ * @param label - label for input
+ * @param style - object of ccs properties for input
+ * @param onBlur - on  blur effect, in this project using for validation fields
+ * @param onChange - onChange hadler for controlling input 
+ * @returns material ui input with custom styles and handlers
  */
 export const CustomTextArea = ({ name, value, onBlur, error, onChange, rows, label, style }: CustomTextAreaType) => (
   <TextField
