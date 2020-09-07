@@ -6,7 +6,10 @@ import { ArticleOverViewComponent } from './ArticleOverViewComponent';
 import { CreateArticleComponent } from './CreateArticleComponent';
 import { ARTICLES, NEW_ARTICLE } from '../constants/routes';
 
-//Component for managing application routes
+/**
+ * Component for managing application routes
+ * @returns Component display depending on route
+ */
 export const Routes = () => (
   <>
     <CssBaseline />

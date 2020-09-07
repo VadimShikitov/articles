@@ -31,6 +31,7 @@ export type Validators = {
   imageUrl: [ValidatorsFunction],
   email: [ValidatorsFunction, ValidatorsFunction],
 };
+
 export const validators: Validators = {
   title: [
     isRequired(IS_REQUIRED_ERROR_MESAGE),

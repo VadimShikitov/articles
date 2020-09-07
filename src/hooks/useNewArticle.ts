@@ -3,6 +3,7 @@ import React, { useState, useCallback } from 'react';
 
 /**
  * article hook. Managing article state.
+ * @returns title, imageUrl, description and callbacks for controlling state by inputs.
  */
 export const useNewArticle = () => {
   const [title, setTitle] = useState('');

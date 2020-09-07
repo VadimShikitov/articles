@@ -16,7 +16,6 @@ const useStyles = makeStyles({
  * Component that renders the navbar application 
  * @returns application navbar
  */
-
 export const HeaderComponent = () => {
   const classes = useStyles();
   return (

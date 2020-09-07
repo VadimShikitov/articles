@@ -5,7 +5,9 @@ import { mockArticles } from './mockArticles'
 import 'mobx-react-lite/batchingForReactDom'
 
 
-//  class for managing an articles that has observaиду variables for a state and an action for changing it
+/**
+ * Class for managing an articles that has observable variables for a state and an action for changing it
+ */
 class ArcticlesStore {
   @observable articles: Articles = mockArticles;
 
