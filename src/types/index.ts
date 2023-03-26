@@ -15,3 +15,5 @@ export interface O {
 }
 
 export type A = O | 'string'
+
+export type asdasd
