@@ -5,7 +5,11 @@ export type Article = {
   id: string,
   likeCount: number,
   isLiked: boolean,
-};
+}
 export type Articles = {
-  [key: string]: Article;
-};
+  [key: string]: Article,
+}
+
+export interface O = {
+  bla: string;
+}
