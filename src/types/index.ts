@@ -10,6 +10,6 @@ export type Articles = {
   [key: string]: Article,
 }
 
-export interface O = {
+export interface O {
   bla: string;
 }
