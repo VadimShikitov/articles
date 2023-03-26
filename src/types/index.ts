@@ -13,3 +13,5 @@ export type Articles = {
 export interface O {
   bla: string;
 }
+
+export type A = O | 'string'
